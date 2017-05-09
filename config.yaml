@@ -1,14 +1,13 @@
 options:
-  string-option:
+  github-client:
     type: string
-    default: "Default Value"
-    description: "A short description of the configuration option"
-  boolean-option:
-    type: boolean
-    default: False
-    description: "A short description of the configuration option"
-  int-option:
-    type: int
-    default: 9001
-    description: "A short description of the configuration option"
-
+    default: ""
+    description: Github OAuth client ID
+  github-secret:
+    type: string
+    default: ""
+    description: Github OAuth Secret
+  channel:
+    type: string
+    default: "edge"
+    description: Snap channel to subscribe to
