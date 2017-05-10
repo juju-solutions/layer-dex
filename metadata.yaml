@@ -1,19 +1,25 @@
-name: che-project-layer
-summary: <Fill in summary here>
-maintainer: Merlijn Sebrechts <merlijn@travers>
+name: dex
+summary: identity service that uses OpenID Connect to drive authentication for other apps.
+maintainer: Charles Butler <charles.butler@canonical.com>
 description: |
-  <Multi-line description here>
+    Dex is NOT a user-management system, but acts as a portal to other identity
+    providers through "connectors." This lets dex defer authentication to LDAP
+    servers, SAML providers, or established identity providers like GitHub,
+    Google, and Active Directory. Clients write their authentication logic
+    once to talk to dex, then dex handles the protocols for a given backend.
 tags:
-  # Replace "misc" with one or more whitelisted tags from this list:
-  # https://jujucharms.com/docs/stable/authors-charm-metadata
-  - misc
+  - authentication
+series:
+    - xenial
 subordinate: false
 provides:
-  provides-relation:
-    interface: interface-name
-requires:
-  requires-relation:
-    interface: interface-name
-peers:
-  peer-relation:
-    interface: interface-name
+  authentication:
+    interface: dex
+# requires:
+#   kube-control:
+#     interface: kube-control
+resources:
+  dex:
+    type: file
+    filename: dex.snap
+    description: The dex snap package

@@ -1,1 +1,11 @@
-includes: ['layer:basic']  # if you use any interfaces, add them here
+repo: https://github.com/juju-solutions/layer-dex
+includes:
+ - 'layer:basic'
+ - 'layer:snap'
+defines:
+    dex_snap:
+      type: string
+      default: lazy-dex
+      description: |
+        "Snap package to install from snapcraft.io by default when no snap
+        resource has been provided."
