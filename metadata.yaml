@@ -15,9 +15,11 @@ subordinate: false
 provides:
   authentication:
     interface: dex
+# requires:
+#   kube-control:
+#     interface: kube-control
 resources:
   dex:
     type: file
     filename: dex.snap
     description: The dex snap package
-

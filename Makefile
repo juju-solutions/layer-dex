@@ -3,7 +3,7 @@ build:
 		charm build -r --no-local-layers
 
 deploy: build
-	juju deploy ${JUJU_REPOSITORY}/builds/dex
+	juju deploy ${JUJU_REPOSITORY}/builds/dex --to kubernetes-master/0
 
 lint:
 	/usr/bin/python3 -m flake8 reactive lib

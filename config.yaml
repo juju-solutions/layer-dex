@@ -2,12 +2,40 @@ options:
   github-client:
     type: string
     default: ""
-    description: Github OAuth client ID
+    description: Github OAuth client ID.
   github-secret:
     type: string
     default: ""
-    description: Github OAuth Secret
+    description: Github OAuth secret.
+  github-org:
+    type: string
+    default: ""
+    description: Github organization to pull teams from.
+  google-client:
+    type: string
+    default: ""
+    description: Google OAuth client ID.
+  google-secret:
+    type: string
+    default: ""
+    description: Google OAuth secret.
   channel:
     type: string
     default: "edge"
-    description: Snap channel to subscribe to
+    description: Snap channel to subscribe to.
+  auth-port:
+    type: int
+    default: 5556
+    description: Port to bind the authorization daemon.
+  expire-signing-keys:
+    type: int
+    default: 6
+    description: Hours before expiring signing keys.
+  expire-id-tokens:
+    type: int
+    default: 24
+    description: Hours before expiring tokens.
+  demo-mode:
+    type: boolean
+    default: true
+    description: Enable insecure demo login.
