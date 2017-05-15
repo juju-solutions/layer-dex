@@ -19,7 +19,7 @@ provides:
 #   kube-control:
 #     interface: kube-control
 resources:
-  dex:
+  lazy-dex:
     type: file
     filename: dex.snap
     description: The dex snap package

@@ -27,6 +27,10 @@ options:
     type: int
     default: 5556
     description: Port to bind the authorization daemon.
+  portal-port:
+    type: int
+    default: 5555
+    description: Port to run the auth-portal ui.
   expire-signing-keys:
     type: int
     default: 6
