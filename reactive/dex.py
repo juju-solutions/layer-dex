@@ -41,7 +41,11 @@ def remove_dex():
     opts = layer.options('dex')
     # This is ugly, but snap.remove resets the state. This will ensure we
     # clean up after ourseles on the way out.
-    check_call(['snap', 'remove', opts['dex_snap']])
+    try:
+        check_call(['snap', 'remove', opts['dex_snap']])
+    except CalledProcessError:
+        msg = "Unable to remove dex snap. Machine may be dirty on exit"
+        log('WARNING', msg)
 
 
 @when('certificates.server.cert.available')
@@ -90,7 +94,6 @@ def cycle_ports():
         open_port(config('auth-port'))
 
 
-@when('dex.ssl.ready')
 @when('config.changed.portal-port')
 def cycle_portal():
     cfg = config()
@@ -169,6 +172,19 @@ def start_auth_portal():
     with open(arg_path, 'w+') as fp:
         for k in portal_args.keys():
             fp.write('--{0}={1} '.format(k, portal_args[k]))
+
+
+@when('authorization.available', 'snap.installed.lazy-dex')
+def provide_authorization_detail(auth):
+    ''' Set configuration values for communicating with the authorization
+    service. '''
+
+    # client_id = portal_token()
+    # groups_claim = config('github-org')
+    issuer_uri = "https://{0}:{1}/dex".format(unit_get('private-address'),
+                                              config('auth-port'))
+
+    auth.configure('example-app', issuer_uri, 'groups', 'email')
 
 
 def invoke_health_message():

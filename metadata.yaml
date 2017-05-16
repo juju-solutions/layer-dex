@@ -13,11 +13,8 @@ series:
     - xenial
 subordinate: false
 provides:
-  authentication:
-    interface: dex
-# requires:
-#   kube-control:
-#     interface: kube-control
+  authorization:
+    interface: kube-oidc
 resources:
   lazy-dex:
     type: file

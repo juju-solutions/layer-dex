@@ -3,6 +3,7 @@ includes:
  - 'layer:basic'
  - 'layer:snap'
  - 'layer:tls-client'
+ - 'interface:kube-oidc'
 defines:
     dex_snap:
       type: string

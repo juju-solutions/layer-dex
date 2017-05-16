@@ -1,6 +1,6 @@
 
 build:
-		charm build -r --no-local-layers
+		charm build -r
 
 deploy: build
 	juju deploy ${JUJU_REPOSITORY}/builds/dex
