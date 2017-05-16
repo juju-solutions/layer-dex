@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+import sys
+import os
+sys.path.append(os.path.join(os.getenv('CHARM_DIR'), 'lib'))
+print(sys.path)
+from charms import layer
+from charms.layer import snap
+from charmhelpers.core.hookenv import config
+
+SNAP_CHANNEL = config('channel')
+opts = layer.options('dex')
+SNAP_PACKAGE = opts['dex_snap']
+
+snap.install(SNAP_PACKAGE, channel=SNAP_CHANNEL)

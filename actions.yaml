@@ -1,0 +1,3 @@
+refresh:
+    description: |
+     Upgrade the dex snap from the configured channel.
