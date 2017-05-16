@@ -29,7 +29,7 @@ frontend:
   dir: /var/snap/lazy-dex/current/web
 
 
-{% if exire_signing_keys and expire_id_tokens %}
+{% if expire_signing_keys and expire_id_tokens %}
 # Uncomment this block to enable configuration for the expiration time durations.
 expiry:
    signingKeys: "{{ expire_signing_keys }}h"
